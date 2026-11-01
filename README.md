@@ -1,6 +1,6 @@
 # Onazi’s Import
 
-Five ready-to-serve static HTML pages for Onazi’s Import in FCT Abuja. Each document includes its styles and optional JavaScript enhancements. There is no application server, framework, client routing or hydration, and no separate stylesheet/script request is needed to display the page. GitHub Pages serves the repository root at https://onazioj179-lab.github.io/OnaziImport/; `.nojekyll` makes it serve the committed static files directly.
+Five ready-to-serve static HTML pages for Onazi’s Import in FCT Abuja. Each document includes its styles and optional JavaScript enhancements. There is no application server, framework, client routing or hydration, and no separate stylesheet/script request is needed to display the page. GitHub Pages serves the repository root at https://onazioj179-lab.github.io/; `.nojekyll` makes it serve the committed static files directly.
 
 Use Node.js 20 or later:
 
@@ -10,7 +10,7 @@ npm run sync
 npm run check
 ```
 
-The preview runs at http://127.0.0.1:4173/OnaziImport/. Set `PORT` to change the preview port. Add `?nojs=1` for a local-only preview with optional JavaScript removed. Checks validate inline asset synchronisation, the native form/menu, syntax, local links and fragments, page landmarks, duplicate IDs and font assets.
+The preview runs at http://127.0.0.1:4173/. Set `PORT` to change the preview port. Add `?nojs=1` for a local-only preview with optional JavaScript removed. Checks validate inline asset synchronisation, the native form/menu, syntax, local links and fragments, page landmarks, duplicate IDs and font assets.
 
 ## Customer features
 
@@ -26,7 +26,7 @@ The preview runs at http://127.0.0.1:4173/OnaziImport/. Set `PORT` to change the
 
 Keep contact details, stock descriptions, hours, policy dates and policy text aligned with actual store practices. Prices, availability and delivery arrangements are confirmed directly with the store. The policy pages preserve applicable consumer rights and link to Nigeria’s NDPC and FCCPC; they do not claim regulatory certification. Revisit privacy wording and consent controls before adding external embeds, analytics, payments or new data collection.
 
-Edit `styles.css` and `site.js` as the shared sources, then run `npm run sync` to update their inline copies in the HTML before committing. The committed pages can be deployed directly; no build runs on a visitor’s device. Update `sitemap.xml` when adding or removing public pages. The custom `404.html` uses the GitHub Pages project base path for its font assets and navigation.
+Edit `styles.css` and `site.js` as the shared sources, then run `npm run sync` to update their inline copies in the HTML before committing. The committed pages can be deployed directly; no build runs on a visitor’s device. Update `sitemap.xml` when adding or removing public pages. The custom `404.html` uses root-relative paths for its font assets and navigation.
 
 Inline styles and enhancements arrive with their matching HTML; visitors cannot receive a new document with an old cached external stylesheet or script. Fonts are optional, self-hosted, and use `font-display: swap` with system-font fallbacks.
 

@@ -15,7 +15,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          base='https://onazioj179-lab.github.io/OnaziImport/'
+          base='https://onazioj179-lab.github.io/'
           paths=(
             ''
             'index.html'
@@ -37,7 +37,7 @@ jobs:
         run: |
           set -euo pipefail
           page="$RUNNER_TEMP/static-home.html"
-          curl --fail --silent --show-error --location --max-time 30 --retry 2 --output "$page" 'https://onazioj179-lab.github.io/OnaziImport/'
+          curl --fail --silent --show-error --location --max-time 30 --retry 2 --output "$page" 'https://onazioj179-lab.github.io/'
           grep -q '<style id="site-styles">' "$page"
           grep -q '<form id="enquiryForm" action="https://wa.me/2348164043196" method="get">' "$page"
           ! grep -Eq '<script[^>]* src=|<link[^>]*rel="stylesheet"' "$page"

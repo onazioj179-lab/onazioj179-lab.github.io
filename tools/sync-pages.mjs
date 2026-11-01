@@ -14,7 +14,7 @@ for (const page of ['index.html', 'privacy.html', 'cookies.html', 'terms.html', 
     .replace(/<script\b[^>]*src="site\.js[^>]*>[\s\S]*?<\/script>\n?/g, '')
     .replace(/<style id="site-styles">[\s\S]*?<\/style>\n?/g, '')
     .replace(/<script id="site-enhancements">[\s\S]*?<\/script>\n?/g, '');
-  const pageCss = page === '404.html' ? css.replaceAll("url('assets/", "url('/OnaziImport/assets/") : css;
+  const pageCss = page === '404.html' ? css.replaceAll("url('assets/", "url('/assets/") : css;
   html = html.replace('</head>', `<style id="site-styles">\n${pageCss}\n</style>\n</head>`);
   if (page !== '404.html') html = html.replace('</body>', `<script id="site-enhancements">\n${js}\n</script>\n</body>`);
   await writeFile(url, html);

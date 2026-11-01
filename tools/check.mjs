@@ -11,7 +11,7 @@ const browserScript = (await readFile(path.join(root, 'site.js'), 'utf8')).repla
 await access(path.join(root, '.nojekyll'));
 for (const [page, html] of files) {
   const inlineCss = html.match(/<style id="site-styles">([\s\S]*?)<\/style>/);
-  const expectedCss = page === '404.html' ? css.replaceAll("url('assets/", "url('/OnaziImport/assets/") : css;
+  const expectedCss = page === '404.html' ? css.replaceAll("url('assets/", "url('/assets/") : css;
   assert.equal(inlineCss?.[1].replace(/\r\n/g, '\n').trim(), expectedCss, `${page}: run npm run sync after editing styles`);
   assert.doesNotMatch(html, /<script\b[^>]*\bsrc=|<link\b[^>]*rel="stylesheet"/i, `${page}: external render dependency`);
   if (page !== '404.html') {
@@ -30,7 +30,7 @@ for (const [page, html] of files) {
     if (/^(https?:|tel:|data:)/.test(link)) continue;
     const [resource, fragment] = link.split('#');
     const target = resource.split('?')[0];
-    const targetFile = target ? target.replace(/^\/OnaziImport\//, '') || 'index.html' : page;
+    const targetFile = target ? target.replace(/^\//, '') || 'index.html' : page;
     await access(path.join(root, targetFile));
     if (fragment) {
       const targetHtml = files.get(targetFile) || await readFile(path.join(root, targetFile), 'utf8');

@@ -10,8 +10,8 @@ http.createServer(async (request, response) => {
   try {
     const requestUrl = new URL(request.url, 'http://localhost');
     const pathname = decodeURIComponent(requestUrl.pathname);
-    // Support both a local root and the production GitHub Pages project path.
-    const relative = pathname.replace(/^\/OnaziImport(?=\/|$)/, '').replace(/^\/+/, '') || 'index.html';
+    // The site is served from the domain root, locally and in production.
+    const relative = pathname.replace(/^\/+/, '') || 'index.html';
     const file = path.resolve(root, relative);
     const inside = path.relative(root, file);
     if (inside.startsWith('..') || path.isAbsolute(inside) || relative.split(/[\\/]/).some(part => part.startsWith('.')) || !/^(index\.html|privacy\.html|cookies\.html|terms\.html|404\.html|styles\.css|site\.js|sitemap\.xml|og-image\.png|assets\/fonts\/[\w.-]+)$/.test(relative)) {
@@ -28,4 +28,4 @@ http.createServer(async (request, response) => {
   } catch {
     response.writeHead(404).end('Not found');
   }
-}).listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/OnaziImport/`));
+}).listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/`));
